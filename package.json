@@ -1,7 +1,11 @@
 {
   "name": "controll",
   "version": "0.1.0",
-  "private": true,
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/artyom-causelove/controll"
+  },
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
