@@ -19,6 +19,8 @@ export default {
 
 <style lang="scss" scoped>
   #app-header {
+    z-index: 1000;
+
     display: flex;
     align-items: center;
 
@@ -30,7 +32,7 @@ export default {
     width: 100%;
 
     background: $controll-background;
-    box-shadow: 0 -4px 10px black;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
 
     .app-header__logo {
       margin-left: 50%;

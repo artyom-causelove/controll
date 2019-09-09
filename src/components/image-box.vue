@@ -14,7 +14,7 @@ export default {
   #image-box {
     position: relative;
     overflow: hidden;
-  
+
     img {
       position: absolute;
       top: 50%;
