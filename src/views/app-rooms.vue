@@ -7,7 +7,9 @@
       </image-box>
     </rectangle-button>
 
-    <circle-button class="app-rooms__add-room-btn">
+    <circle-button class="app-rooms__add-room-btn"
+      @click="addingRoom = true"
+    >
       <template v-slot:inner>
         <p class="add-room-btn__inner-text">+</p>
       </template>
@@ -39,16 +41,31 @@
         6.91309C10.8913 6.7054 11.1383 6.59798 11.4248 6.59082Z" fill="white"/>
       </svg>
     </rectangle-button>
+
+    <room-add-card class="app-rooms__room-adding-card"
+      v-if="addingRoom"
+      @cancel="addingRoom = false"
+      @submit="addingRoom = false"
+    >
+
+    </room-add-card>
   </div>
 </template>
 
 <script>
 import roomChanger from '@/components/room-changer'
+import roomAddCard from '@/components/room-add-card'
 
 export default {
   name: 'app-rooms',
+  data () {
+    return {
+      addingRoom: false
+    }
+  },
   components: {
-    roomChanger
+    roomChanger,
+    roomAddCard
   }
 }
 </script>
@@ -158,6 +175,17 @@ export default {
 
       width: 160px;
       height: 38px;
+    }
+
+    .app-rooms__room-adding-card {
+      z-index: 1000;
+
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -55%);
     }
   }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div id="circle-button">
+  <div id="circle-button" @click="$emit('click')">
     <div ref="circle" class="circle-button__circle">
       <slot name="inner"></slot>
     </div>
@@ -14,7 +14,7 @@
 export default {
   name: 'circle-button',
   mounted () {
-    this.$refs.circle.style.height = this.$refs.circle.offsetWidth + 'px';
+    this.$refs.circle.style.height = this.$refs.circle.offsetWidth + 'px'
   }
 }
 </script>
@@ -40,6 +40,6 @@ export default {
       border: 6px solid;
       border-color: inherit;
       border-radius: 50%;
-    } 
+    }
   }
 </style>
