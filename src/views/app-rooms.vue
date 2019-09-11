@@ -1,6 +1,8 @@
 <template>
   <div id="app-rooms">
-    <rectangle-button class="app-rooms__my-items-btn">
+    <rectangle-button class="app-rooms__my-items-btn"
+      @click="addingItems = true"
+    >
       <p class="my-items-btn__text">MY ITEMS</p>
       <image-box class="my-items-btn__image">
         <img src="@/assets/images/items.png" alt="Items image">
@@ -44,28 +46,38 @@
 
     <room-add-card class="app-rooms__room-adding-card"
       v-if="addingRoom"
-      @cancel="addingRoom = false"
-      @submit="addingRoom = false"
+      @cancelClick="addingRoom = false"
+      @submitClick="addingRoom = false"
     >
 
     </room-add-card>
+
+    <items-card class="app-rooms__items-card"
+      v-if="addingItems"
+      @submitClick="addingItems = false"
+    >
+
+    </items-card>
   </div>
 </template>
 
 <script>
 import roomChanger from '@/components/room-changer'
-import roomAddCard from '@/components/room-add-card'
+import roomAddCard from '@/components/cards/room-add-card'
+import itemsCard from '@/components/cards/items-card'
 
 export default {
   name: 'app-rooms',
   data () {
     return {
-      addingRoom: false
+      addingRoom: false,
+      addingItems: false
     }
   },
   components: {
     roomChanger,
-    roomAddCard
+    roomAddCard,
+    itemsCard
   }
 }
 </script>
@@ -180,6 +192,15 @@ export default {
     .app-rooms__room-adding-card {
       z-index: 1000;
 
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -55%);
+    }
+
+    .app-rooms__items-card {
       position: absolute;
 
       top: 50%;

@@ -14,6 +14,8 @@ export default {
 
 <style lang="scss" scoped>
   #cancel-button {
+    cursor: pointer;
+
     .cancel-button__image {
       width: inherit;
       height: inherit;

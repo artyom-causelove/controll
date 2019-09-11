@@ -9,6 +9,7 @@ import '@/assets/fonts/_typo.scss'
 import imageBox from '@/components/image-box'
 import appInput from '@/components/inputs/app-input'
 import rectangleButton from '@/components/buttons/rectangle-button'
+import addButton from '@/components/buttons/add-button'
 import circleButton from '@/components/buttons/circle-button'
 
 Vue.config.productionTip = false
@@ -16,6 +17,7 @@ Vue.config.productionTip = false
 Vue.component('image-box', imageBox)
 Vue.component('rectangle-button', rectangleButton)
 Vue.component('circle-button', circleButton)
+Vue.component('add-button', addButton)
 Vue.component('app-input', appInput)
 
 new Vue({

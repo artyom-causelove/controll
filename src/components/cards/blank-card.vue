@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  #room-add-card {
+  #blank-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

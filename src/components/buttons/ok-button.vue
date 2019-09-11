@@ -14,6 +14,8 @@ export default {
 
 <style lang="scss" scoped>
   #ok-button {
+    cursor: pointer;
+
     .ok-button__image {
       width: inherit;
       height: inherit;
