@@ -25,8 +25,8 @@ export default {
   border-radius: 5px;
 
   .delete-button__image {
-    width: 80%;
-    height: 80%;
+    width: 70%;
+    height: 70%;
   }
 }
 </style>

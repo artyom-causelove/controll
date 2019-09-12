@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import { VueReCaptcha } from 'vue-recaptcha-v3'
 import * as firebase from 'firebase'
 
 import '@/assets/fonts/_typo.scss'
@@ -13,6 +14,8 @@ import addButton from '@/components/buttons/add-button'
 import circleButton from '@/components/buttons/circle-button'
 
 Vue.config.productionTip = false
+
+Vue.use(VueReCaptcha, { siteKey: '6LdfI7gUAAAAALGmQwLQ9uadO5Nseq_AYzqETmmo' })
 
 Vue.component('image-box', imageBox)
 Vue.component('rectangle-button', rectangleButton)
@@ -26,15 +29,21 @@ new Vue({
   render: h => h(App),
   created () {
     let firebaseConfig = {
-      apiKey: 'AIzaSyB4Gam8txMQF-eOOo-GMQyRqk426CONl6U',
-      authDomain: 'controll-c0b3f.firebaseapp.com',
-      databaseURL: 'https://controll-c0b3f.firebaseio.com',
-      projectId: 'controll-c0b3f',
+      apiKey: 'AIzaSyApHUkaHxUbUlQ2DswGtn61BBhJ6SqgQP0',
+      authDomain: 'controll-37c24.firebaseapp.com',
+      databaseURL: 'https://controll-37c24.firebaseio.com',
+      projectId: 'controll-37c24',
       storageBucket: '',
-      messagingSenderId: '236842237861',
-      appId: '1:236842237861:web:49b44edf210b9171af324c'
+      messagingSenderId: '622713998408',
+      appId: '1:622713998408:web:a92a78f4bbf95b9efc1c7d'
     }
 
     firebase.initializeApp(firebaseConfig)
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.$store.dispatch('autoLoginUser', user)
+      }
+    })
   }
 }).$mount('#app')
