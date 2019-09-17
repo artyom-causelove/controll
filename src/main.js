@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import VueResource from 'vue-resource'
+import Vuelidate from 'vuelidate'
 import { VueReCaptcha } from 'vue-recaptcha-v3'
 import * as firebase from 'firebase'
 
@@ -16,6 +18,8 @@ import circleButton from '@/components/buttons/circle-button'
 Vue.config.productionTip = false
 
 Vue.use(VueReCaptcha, { siteKey: '6LdfI7gUAAAAALGmQwLQ9uadO5Nseq_AYzqETmmo' })
+Vue.use(VueResource)
+Vue.use(Vuelidate)
 
 Vue.component('image-box', imageBox)
 Vue.component('rectangle-button', rectangleButton)

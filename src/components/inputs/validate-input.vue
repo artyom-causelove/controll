@@ -1,13 +1,31 @@
 <template>
   <div id="validate-input">
-    <input class="validate-input__input" :type="type" :placeholder="placeholder">
-    <p class="validate-input__error">Invalid email</p>
+    <input class="validate-input__input"
+      :type="type"
+      :placeholder="placeholder"
+      :value="value"
+      @input="valueUpdated"
+      @change="valueUpdated"
+    >
+    <p class="validate-input__error"> {{ error }} </p>
   </div>
 </template>
 
 <script>
 export default {
   props: {
+    value: {
+      required: false,
+      type: String
+    },
+    lazy: {
+      default: false,
+      type: Boolean
+    },
+    validationObject: {
+      required: true,
+      type: Object
+    },
     type: {
       default: 'text',
       type: String
@@ -15,9 +33,32 @@ export default {
     placeholder: {
       default: '',
       type: String
+    },
+  },
+  name: 'validate-input',
+  methods: {
+    valueUpdated ($event) {
+      if ((!this.lazy && $event.type === 'input') || (this.lazy && $event.type === 'change')) {
+        this.validationObject.$touch()
+        this.$emit('input', $event.target.value)
+      }
     }
   },
-  name: 'validate-input'
+  computed: {
+    error () {
+      if (!this.validationObject.$dirty) {
+        return ''
+      }
+
+      if (!this.validationObject.required) {
+        return 'The field is required.'
+      }
+
+      if (!this.validationObject.email) {
+        return 'The field must be an email.'
+      }
+    }
+  }
 }
 </script>
 
@@ -48,6 +89,8 @@ export default {
   }
 
   .validate-input__error {
+    height: 15px;
+
     flex-grow: 0;
     align-self: flex-end;
 

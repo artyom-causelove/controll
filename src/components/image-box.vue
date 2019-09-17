@@ -1,5 +1,7 @@
 <template>
-  <div id="image-box">
+  <div id="image-box"
+    @click="$emit('click')"
+  >
     <slot></slot>
   </div>
 </template>

@@ -1,6 +1,5 @@
 <template>
   <div id="app-login">
-    <button @click="recaptcha">awd</button>
     <sign-in-card class="app-login__sign-in-card">
 
     </sign-in-card>
@@ -14,8 +13,19 @@ export default {
   name: 'app-login',
   methods: {
     async recaptcha () {
-      const token = await this.$recaptcha('login')
-      console.log(token)
+      let token
+      try {
+        token = await this.$recaptcha('login')
+      } catch (error) {
+        console.error('Google server error: ' + error)
+      }
+
+      try {
+        const response = await this.$http.post('http://127.0.0.1:3000/reCAPTCHA',
+          { token }, { headers: { 'content-type': 'application/json' } })
+      } catch (error) {
+        console.error('Server error: ' + error)
+      }
     }
   },
   components: {
